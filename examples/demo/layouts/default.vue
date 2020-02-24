@@ -9,6 +9,7 @@
           <b-nav-item to="/" exact>Home</b-nav-item>
           <b-nav-item to="/public">Public</b-nav-item>
           <b-nav-item to="/secure">Secure</b-nav-item>
+          <b-nav-item v-if="showOauth2RefreshTestLink" to="/oauth2RefreshTest">Oauth2 token refresh test</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <template v-if="$auth.$state.loggedIn">
@@ -38,6 +39,9 @@ export default  {
       return  dotProp(this.$auth.user, 'picture') ||  // OpenID
               dotProp(this.$auth.user, 'picture.data.url') || // Facebook graph API
               dotProp(this.$auth.user, 'avatar_url') // GitHub
+    },
+    showOauth2RefreshTestLink() {
+      return this.$auth.$state.strategy === 'oauth2mock' && this.$auth.$state.loggedIn
     }
   }
 
