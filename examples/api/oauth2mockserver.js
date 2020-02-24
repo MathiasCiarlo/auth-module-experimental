@@ -36,7 +36,8 @@ app.get('/userinfo', (req, res, next) => {
     "name"       : "Alice Adams",
     "email"      : "alice@example.com",
     "department" : "Engineering",
-    "birthdate"  : "1975-12-31"
+    "birthdate"  : "1975-12-31",
+    "picture"    : "https://github.com/nuxt.png"
   })
 })
 
